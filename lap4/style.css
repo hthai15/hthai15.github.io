@@ -1,0 +1,94 @@
+/* Reset & Font */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.form-container {
+    width: 420px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 35px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.contact-form h2 {
+    font-size: 26px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Form fields */
+.contact-form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: #2575fc;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+/* Button */
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    box-shadow: 0 6px 15px rgba(255, 75, 43, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 65, 80, 0.5);
+}
+
