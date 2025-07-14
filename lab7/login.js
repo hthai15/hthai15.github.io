@@ -1,7 +1,7 @@
-const inputUsername = document.querySelector(".input-login-username");
-const inputPassword = document.querySelector(".input-login-password");
-
 function login() {
+  const inputUsername = document.querySelector(".input-login-username");
+  const inputPassword = document.querySelector(".input-login-password");
+
   if (!inputUsername.value || !inputPassword.value) {
     alert("Please enter your email and password!");
     return;
@@ -16,7 +16,7 @@ function login() {
   if (foundUser) {
     alert("Login successful!");
     localStorage.setItem("currentUser", JSON.stringify(foundUser));
-    window.location.href = "index.html";
+    window.location.href = "index.html";  // ← Điểm quan trọng!
   } else {
     alert("Invalid email or password.");
   }
