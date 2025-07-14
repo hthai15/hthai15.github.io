@@ -16,7 +16,7 @@ function login() {
   if (foundUser) {
     alert("Login successful!");
     localStorage.setItem("currentUser", JSON.stringify(foundUser));
-    window.location.href = "index.html";  // ← Điểm quan trọng!
+    window.location.href = "home.html";  // ← Điểm quan trọng!
   } else {
     alert("Invalid email or password.");
   }
