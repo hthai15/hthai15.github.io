@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Sport - Trang Chủ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-green-700 text-white p-4 sticky top-0 z-10 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">Thai Sport</a>
+            <div class="flex space-x-4 items-center">
+                <a href="index.html" class="hover:text-yellow-400 transition">Trang Chủ</a>
+                <a href="contact.html" class="hover:text-yellow-400 transition">Liên Hệ</a>
+                <a href="login.html" class="hover:text-yellow-400 transition">Đăng Nhập</a>
+                <a href="register.html" class="hover:text-yellow-400 transition">Đăng Ký</a>
+                <a href="profile.html" class="hover:text-yellow-400 transition">Hồ Sơ</a>
+                <a href="cart.html" class="flex items-center hover:text-yellow-400 transition">
+                    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span id="cartCount" class="bg-yellow-400 text-green-700 rounded-full px-2 py-1 text-xs">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="heroSection" class="bg-cover bg-center py-20" style="background-image: url('img/background.png');">
+        <div class="container mx-auto text-center text-white">
+            <h1 class="text-5xl font-bold mb-4 animate-fade-in text-shadow-lg text-blue-400">Thai Sport Xin Chào Quý Khách</h1>
+            <p class="text-xl mb-6 text-shadow-lg text-blue-100">Trang bị bóng đá chính hãng, chất lượng cao để chinh phục mọi trận đấu!</p>
+            <a href="register.html" class="bg-yellow-400 text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition duration-300">Mua Sắm Ngay</a>
+        </div>
+    </section>
+
+    <!-- Product Filter -->
+    <section class="container mx-auto py-6">
+        <div class="flex justify-center">
+            <select id="productFilter" class="p-2 border rounded-lg bg-white text-green-700 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                <option value="all">Tất Cả Sản Phẩm</option>
+                <option value="boots">Giày Bóng Đá</option>
+                <option value="clothing">Quần Áo</option>
+                <option value="gloves">Găng Tay</option>
+                <option value="accessories">Phụ Kiện Khác</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8 text-green-700">Sản Phẩm</h2>
+        <div id="productList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Football Boots -->
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="boots">
+                <img src="img/NikeZoomMercurialVapor15EliteFG.png" alt="Nike Zoom Mercurial Vapor 15 Elite TF" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Nike Zoom Mercurial Vapor 15 Elite FG</h3>
+                <p class="text-gray-600">4.500.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Nike Zoom Mercurial Vapor 15 Elite FG', 4500000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Nike Zoom Mercurial Vapor 15 Elite FG', 4500000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="boots">
+                <img src="img/AdidasPredatorEliteTF.png" alt="Adidas Predator Elite FG" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Adidas Predator Elite FG</h3>
+                <p class="text-gray-600">5.200.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Adidas Predator Elite FG', 5200000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Adidas Predator Elite FG', 5200000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="boots">
+                <img src="img/MizunoMoreliaNeoIIIBetaJapan.png" alt="Mizuno Morelia Neo III Beta Japan" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Mizuno Morelia Neo III Beta Japan</h3>
+                <p class="text-gray-600">3.800.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Mizuno Morelia Neo III Beta Japan', 3800000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Mizuno Morelia Neo III Beta Japan', 3800000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="boots">
+                <img src="img/Puma Future 1.4 FG.png" alt="Puma Future 1.4 FG" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Puma Future 1.4 FG</h3>
+                <p class="text-gray-600">2.750.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Puma Future 1.4 FG', 2750000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('WPuma Future 1.4 FG', 2750000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <!-- Clothing -->
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="clothing">
+                <img src="img/Áo Đấu Nike PSG Home 2024/25.png" alt="Đồ thi đấu Home 2024/25" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Đồ thi đấu PSG Home 2024/25</h3>
+                <p class="text-gray-600">1.200.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Đồ thi đấuPSG Home 2024/25', 1200000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Đồ thi đấu PSG Home 2024/25', 1200000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="clothing">
+                <img src="img/MU.png" alt="Đồ thi đấu Adidas Manchester United Away 2024/25" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Đồ thi đấu Adidas Man Utd Away 2024/25</h3>
+                <p class="text-gray-600">1.300.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Đồ thi đấu Adidas Manchester United Away 2024/25', 1300000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Đồ thi đấu Adidas Manchester United Away 2024/25', 1300000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="clothing">
+                <img src="img/MC.png" alt="Bộ Đồ Tập Puma Man City Definitely City" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Bộ Đồ Tập Puma Man City Definitely City</h3>
+                <p class="text-gray-600">1.800.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Bộ Đồ Tập Puma Man City Definitely City', 1800000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Bộ Đồ Tập Puma Man City Definitely City', 1800000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <!-- Gloves -->
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="gloves">
+                <img src="img/GKPM.png" alt="Găng Tay Thủ Môn Puma Future Ultimate NC" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Găng Tay Thủ Môn Puma Future Ultimate NC</h3>
+                <p class="text-gray-600">2.200.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Găng Tay Thủ Môn Puma Future Ultimate NC', 2200000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Găng Tay Thủ Môn Puma Future Ultimate NC', 2200000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="gloves">
+                <img src="img/GKT1.png" alt="Găng Tay Thủ Môn Rinat Ghotta Retro Blue" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Găng Tay Thủ Môn Rinat Ghotta Retro Blue</h3>
+                <p class="text-gray-600">2.500.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Găng Tay Thủ Môn Rinat Ghotta Retro Blue', 2500000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Găng Tay Thủ Môn Rinat Ghotta Retro Blue', 2500000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <!-- Accessories -->
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="accessories">
+                <img src="img/bongmolten.png" alt="Quả Bóng Đá Molten Vantaggio 5000" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Quả Bóng Đá Molten Vantaggio 5000</h3>
+                <p class="text-gray-600">1.000.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Quả Bóng Đá Molten Vantaggio 5000', 1000000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Quả Bóng Đá Molten Vantaggio 5000', 1000000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="accessories">
+                <img src="img/BVOD.png" alt="Tấm Bảo Vệ Ống Chân Nike Mercurial Lite" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Tấm Bảo Vệ Ống Chân Nike Mercurial Lite</h3>
+                <p class="text-gray-600">600.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Tấm Bảo Vệ Ống Chân Nike Mercurial Lite', 600000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Tấm Bảo Vệ Ống Chân Nike Mercurial Lite', 600000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-slide-up product-item" data-category="accessories">
+                <img src="img/TatAdidas.png" alt="Tất Bóng Đá Adidas AdiSock 24" class="w-full h-48 object-cover mb-4 rounded">
+                <h3 class="text-xl font-semibold text-green-700">Tất Bóng Đá Adidas AdiSock 24</h3>
+                <p class="text-gray-600">350.000 VNĐ</p>
+                <div class="mt-4 flex space-x-2">
+                    <button onclick="addToCart('Tất Bóng Đá Adidas AdiSock 24', 350000)" class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300 add-to-cart">Thêm vào Giỏ</button>
+                    <button onclick="buyNow('Tất Bóng Đá Adidas AdiSock 24', 350000)" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300">Mua Hàng</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Thai Sport. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

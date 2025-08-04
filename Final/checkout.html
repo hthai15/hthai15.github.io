@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh Toán</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+        <h1 class="text-2xl font-bold mb-4 text-center">Thông Tin Đơn Hàng</h1>
+        <div id="productInfo" class="text-lg">
+            <!-- Thông tin sản phẩm sẽ hiển thị ở đây -->
+        </div>
+        <div class="mt-6 text-center">
+            <button onclick="confirmOrder()" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600">Xác nhận đặt hàng</button>
+        </div>
+    </div>
+
+    <script>
+        // Lấy dữ liệu sản phẩm từ localStorage
+        const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+        const productInfoDiv = document.getElementById("productInfo");
+
+        if (product) {
+            productInfoDiv.innerHTML = `
+                <p><strong>Sản phẩm:</strong> ${product.name}</p>
+                <p><strong>Giá:</strong> ${product.price.toLocaleString()} VNĐ</p>
+            `;
+        } else {
+            productInfoDiv.innerHTML = "<p>Không có sản phẩm nào được chọn.</p>";
+        }
+
+        function confirmOrder() {
+            alert("Cảm ơn bạn đã đặt hàng! Đơn hàng của bạn đang được xử lý.");
+            localStorage.removeItem("selectedProduct");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

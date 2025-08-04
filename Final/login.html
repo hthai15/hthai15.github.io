@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Sport - Đăng Nhập</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <nav class="bg-green-700 text-white p-4 sticky top-0 z-10 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">Thai Sport</a>
+            <div class="flex space-x-4 items-center">
+                <a href="index.html" class="hover:text-yellow-400 transition">Trang Chủ</a>
+                <a href="contact.html" class="hover:text-yellow-400 transition">Liên Hệ</a>
+                <a href="login.html" class="hover:text-yellow-400 transition">Đăng Nhập</a>
+                <a href="register.html" class="hover:text-yellow-400 transition">Đăng Ký</a>
+                <a href="profile.html" class="hover:text-yellow-400 transition">Hồ Sơ</a>
+                <a href="cart.html" class="flex items-center hover:text-yellow-400 transition">
+                    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <span id="cartCount" class="bg-yellow-400 text-green-700 rounded-full px-2 py-1 text-xs">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8 text-green-700">Đăng Nhập</h2>
+        <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+            <div id="loginError" class="text-red-500 mb-4 hidden"></div>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label for="loginEmail" class="block text-gray-700">Email</label>
+                    <input type="email" id="loginEmail" class="w-full p-2 border rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="loginPassword" class="block text-gray-700">Mật Khẩu</label>
+                    <input type="password" id="loginPassword" class="w-full p-2 border rounded" required>
+                </div>
+                <button type="submit"
+                        class="bg-yellow-400 text-green-700 px-4 py-2 rounded-full hover:bg-yellow-500 transition duration-300">
+                    Đăng Nhập
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-green-700 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Thai Sport. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                window.location.href = 'index.html'; // ✅ Chuyển về trang chủ
+            } else {
+                errorDiv.textContent = 'Sai email hoặc mật khẩu.';
+                errorDiv.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
