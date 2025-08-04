@@ -25,72 +25,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Login Form Submission
     const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            const errorDiv = document.getElementById('loginError');
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-            if (!validateEmail(email)) {
-                errorDiv.textContent = 'Định dạng email không hợp lệ';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        const errorDiv = document.getElementById('loginError');
 
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            const user = users.find(u => u.email === email && u.password === password);
-            if (user) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'profile.html';
-            } else {
-                errorDiv.textContent = 'Email hoặc mật khẩu không đúng';
-                errorDiv.classList.remove('hidden');
-            }
-        });
-    }
+        if (!validateEmail(email)) {
+            errorDiv.textContent = 'Định dạng email không hợp lệ';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            // ✅ Lưu thông tin đăng nhập vào localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', user.email);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+            window.location.href = 'profile.html';
+        } else {
+            errorDiv.textContent = 'Email hoặc mật khẩu không đúng';
+            errorDiv.classList.remove('hidden');
+        }
+    });
+}
+
+// ✅ Hàm kiểm tra định dạng email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 
     // Register Form Submission
-    const registerForm = document.getElementById('registerForm');
-    if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const errorDiv = document.getElementById('registerError');
+const registerForm = document.getElementById('registerForm');
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-            if (!validateEmail(email)) {
-                errorDiv.textContent = 'Định dạng email không hợp lệ';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            if (password.length < 6) {
-                errorDiv.textContent = 'Mật khẩu phải có ít nhất 6 ký tự';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            if (password !== confirmPassword) {
-                errorDiv.textContent = 'Mật khẩu không khớp';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
+        const name = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const errorDiv = document.getElementById('registerError');
 
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            if (users.some(u => u.email === email)) {
-                errorDiv.textContent = 'Email đã được đăng ký';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
+        if (!validateEmail(email)) {
+            errorDiv.textContent = 'Định dạng email không hợp lệ';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
+        if (password.length < 6) {
+            errorDiv.textContent = 'Mật khẩu phải có ít nhất 6 ký tự';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
+        if (password !== confirmPassword) {
+            errorDiv.textContent = 'Mật khẩu không khớp';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
 
-            const newUser = { name, email, password };
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-            window.location.href = 'profile.html';
-        });
-    }
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        if (users.some(u => u.email === email)) {
+            errorDiv.textContent = 'Email đã được đăng ký';
+            errorDiv.classList.remove('hidden');
+            return;
+        }
+
+        const newUser = { name, email, password };
+
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // ✅ Lưu thông tin đăng nhập và người dùng vào localStorage
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', email);
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+        window.location.href = 'profile.html';
+    });
+}
+
+// ✅ Hàm kiểm tra định dạng email (đảm bảo có trong file)
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
 
     // Product Filter
     const filterSelect = document.getElementById("productFilter");
