@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Lê Tấn Hơn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            -webkit-print-color-adjust: exact;
+        }
+
+        /* A4 Paper Size Setup for Print */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+        
+        /* Custom layout for mobile responsiveness */
+        @media (max-width: 768px) {
+            .a4-page {
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Print Button (Hidden when printing) -->
+    <div class="no-print fixed bottom-5 right-5 z-50 flex flex-col gap-3">
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 shadow-lg rounded max-w-xs text-sm mb-2">
+            <p class="font-bold">Mẹo:</p>
+            <p>Bấm vào hình tròn Avatar để tải ảnh của bạn lên trước khi in nhé!</p>
+        </div>
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all">
+            <i class="fas fa-file-pdf"></i> Tải PDF / In CV
+        </button>
+    </div>
+
+    <!-- Main CV Container -->
+    <div class="a4-page">
+        
+        <!-- Left Column: Dark Sidebar -->
+        <div class="w-full md:w-1/3 bg-gray-900 text-white p-8 flex flex-col justify-between">
+            <div>
+                <!-- Avatar Upload Section (Interactive) -->
+                <div class="relative group cursor-pointer w-40 h-40 mx-auto mb-8" title="Bấm để chọn ảnh">
+                    <div id="avatarPreview" class="w-full h-full bg-gray-700 rounded-full border-4 border-gray-600 overflow-hidden flex items-center justify-center relative z-10" onclick="document.getElementById('avatarInput').click()">
+                         <i id="defaultIcon" class="fas fa-user text-6xl text-gray-400"></i>
+                         <img id="userImage" class="w-full h-full object-cover hidden" src="" alt="Avatar">
+                    </div>
+                    
+                    <!-- Hover Text / Click hint (Hidden in print) -->
+                    <div class="no-print absolute inset-0 flex items-center justify-center rounded-full bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+                        <span class="text-white text-xs font-bold uppercase"><i class="fas fa-camera mr-1"></i> Chọn ảnh</span>
+                    </div>
+                    
+                    <!-- Hidden File Input -->
+                    <input type="file" id="avatarInput" class="hidden" accept="image/*" onchange="previewImage(event)">
+                </div>
+
+                <!-- Contact Info -->
+                <h3 class="text-lg font-bold uppercase border-b border-gray-600 pb-2 mb-4 tracking-wider text-gray-300">Liên Hệ</h3>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-phone mt-1 text-blue-400"></i>
+                        <span>0368 791 631</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-envelope mt-1 text-blue-400"></i>
+                        <span class="break-all">honact789@gmail.com</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-blue-400"></i>
+                        <span>364/5 Dương Quảng Hàm, P.5, Q.Gò Vấp, TP.HCM</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-calendar mt-1 text-blue-400"></i>
+                        <span>21/06/2003</span>
+                    </li>
+                </ul>
+
+                <!-- Education -->
+                <h3 class="text-lg font-bold uppercase border-b border-gray-600 pb-2 mb-4 mt-10 tracking-wider text-gray-300">Học Vấn</h3>
+                <div class="text-sm">
+                    <p class="font-bold text-white text-lg">CĐ Kỹ Thuật Cao Thắng</p>
+                    <p class="text-blue-400 font-medium">Chuyên ngành: Mạng Máy Tính</p>
+                    <p class="text-gray-400 text-xs mt-1">Nền tảng tư duy logic & kỹ năng tin học tốt</p>
+                </div>
+
+                <!-- Languages / Tech Skills -->
+                <h3 class="text-lg font-bold uppercase border-b border-gray-600 pb-2 mb-4 mt-10 tracking-wider text-gray-300">Tin Học</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-gray-700 text-xs px-3 py-1 rounded">Word/Excel</span>
+                    <span class="bg-gray-700 text-xs px-3 py-1 rounded">PowerPoint</span>
+                    <span class="bg-gray-700 text-xs px-3 py-1 rounded">Mạng xã hội</span>
+                </div>
+            </div>
+
+            <!-- Decorative footer of sidebar -->
+            <div class="mt-8 text-center text-xs text-gray-500">
+                <p>© 2025 Le Tan Hon</p>
+            </div>
+        </div>
+
+        <!-- Right Column: Main Content -->
+        <div class="w-full md:w-2/3 bg-white p-8 md:p-10 text-gray-800">
+            
+            <!-- Header Name -->
+            <div class="mb-10">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 uppercase tracking-tight mb-2">LÊ TẤN HƠN</h1>
+                <h2 class="text-xl text-blue-700 font-semibold uppercase tracking-widest">Quản Lý Kinh Doanh / Chuyên Viên Tư Vấn</h2>
+            </div>
+
+            <!-- Career Objective (Summary) -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold uppercase text-gray-900 border-l-4 border-blue-600 pl-3 mb-4">Mục Tiêu Nghề Nghiệp</h3>
+                <p class="text-gray-600 text-justify leading-relaxed">
+                    Mong muốn ứng dụng thế mạnh về <b>tư duy giao tiếp</b>, khả năng <b>đàm phán</b> và kinh nghiệm <b>quản lý đội nhóm</b> thực chiến để mang lại doanh thu đột phá. Hướng tới mục tiêu trở thành một nhà quản lý cấp cao, chuyên nghiệp trong lĩnh vực kinh doanh và tư vấn giải pháp cho khách hàng.
+                </p>
+            </div>
+
+            <!-- Core Competencies (The requested highlights) -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold uppercase text-gray-900 border-l-4 border-blue-600 pl-3 mb-4">Kỹ Năng & Sở Trường</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fas fa-comments text-blue-600"></i>
+                            <span class="font-bold text-gray-800">Giao tiếp & Thuyết phục</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Trình bày mạch lạc, tự tin; nắm bắt tâm lý để thuyết phục khách hàng hiệu quả.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fas fa-handshake text-blue-600"></i>
+                            <span class="font-bold text-gray-800">Đàm phán Thương lượng</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Tư duy nhạy bén, đưa ra giải pháp "win-win" để chốt hợp đồng thành công.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fas fa-users-cog text-blue-600"></i>
+                            <span class="font-bold text-gray-800">Điều phối & Lãnh đạo</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Quản lý đội nhóm, phân chia công việc khoa học và đào tạo nhân sự mới.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fas fa-headset text-blue-600"></i>
+                            <span class="font-bold text-gray-800">Tư vấn & CSKH</span>
+                        </div>
+                        <p class="text-xs text-gray-500">Tận tâm trong tư vấn, duy trì mối quan hệ bền vững với khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div class="mb-6">
+                <h3 class="text-xl font-bold uppercase text-gray-900 border-l-4 border-blue-600 pl-3 mb-4">Kinh Nghiệm Làm Việc</h3>
+                
+                <div class="relative pl-4 border-l-2 border-gray-200">
+                    <!-- Timeline Dot -->
+                    <div class="absolute -left-1.5 top-1.5 w-3 h-3 bg-blue-600 rounded-full"></div>
+                    
+                    <div class="mb-6">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-1">
+                            <h4 class="text-lg font-bold text-gray-800">Chubb Life Việt Nam</h4>
+                            <span class="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">08/2025 – 11/2025</span>
+                        </div>
+                        <p class="italic text-gray-600 mb-3">Vị trí: Chuyên viên Tư vấn & Leader Kinh doanh</p>
+
+                        <!-- Highlighted Achievement -->
+                        <div class="bg-yellow-50 border border-yellow-200 p-3 rounded-md mb-4">
+                            <p class="text-sm text-yellow-800 font-semibold">
+                                <i class="fas fa-trophy mr-1"></i> Thành tích nổi bật:
+                            </p>
+                            <p class="text-sm text-gray-700 mt-1">
+                                Xuất sắc thăng cấp lên vị trí <b>Quản lý (Leader) chỉ sau 01 tháng</b> làm việc. Trực tiếp quản lý và dẫn dắt đội nhóm <b>08 thành viên</b> đạt hiệu quả cao.
+                            </p>
+                        </div>
+
+                        <!-- Tasks -->
+                        <ul class="list-disc list-outside ml-4 text-sm text-gray-600 space-y-2">
+                            <li>
+                                <strong class="text-gray-800">Tư vấn giải pháp:</strong> Phân tích nhu cầu tài chính, thiết kế và tư vấn các gói bảo vệ phù hợp nhất cho từng phân khúc khách hàng.
+                            </li>
+                            <li>
+                                <strong class="text-gray-800">Đàm phán & Chốt sale:</strong> Tìm kiếm khách hàng qua đa nền tảng, xử lý từ chối và thuyết phục ký kết hợp đồng.
+                            </li>
+                            <li>
+                                <strong class="text-gray-800">Điều phối & Đào tạo:</strong> Hỗ trợ tuyển dụng nhân sự, đào tạo kỹ năng bán hàng và xử lý tình huống cho nhân viên mới.
+                            </li>
+                            <li>
+                                <strong class="text-gray-800">Chịu áp lực:</strong> Đảm bảo chỉ tiêu doanh số cá nhân và quản lý KPI của cả đội nhóm.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script to handle Image Upload/Preview -->
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const img = document.getElementById('userImage');
+                    const icon = document.getElementById('defaultIcon');
+                    
+                    // Show image, hide icon
+                    img.src = e.target.result;
+                    img.classList.remove('hidden');
+                    icon.classList.add('hidden');
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
